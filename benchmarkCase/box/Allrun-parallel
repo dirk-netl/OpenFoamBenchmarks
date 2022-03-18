@@ -1,0 +1,18 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+
+runApplication blockMesh
+runApplication decomposePar
+
+#mpirun -np 40 refineMesh -all -parallel -overwrite
+runParallel explicitLaplacianFoam2 
+
+if false
+then    
+    runParallel foamToVTK
+fi
+
+#------------------------------------------------------------------------------

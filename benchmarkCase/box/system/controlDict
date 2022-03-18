@@ -1,0 +1,93 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     laplacianFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         6.25e-3;
+
+/*
+    for stabiliy  dt < (1/6) (L^2/D_T) (1/N)^2
+
+    with L = 1 and D_T = 1
+
+    dt < (1/6) (1/N)^2
+
+    For finite volume the boundary conditions seem to make the limit smaller 
+
+    dt < (1/12) (1/N)^2 
+    
+    N             dt_max
+    -------------------------
+    20     4.16e-4     2.08e-4   
+    100    1.67e-5     8.33e-6
+*/
+
+deltaT          6.25e-7;
+
+writeControl    timeStep;
+
+writeInterval   10000;
+
+purgeWrite      0;
+
+writeFormat     binary;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+
+// ************************************************************************* //
+
+purgeWrite      0;
+
+writeFormat     binary;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+functions
+{
+    #includeFunc surfaces
+    #includeFunc probes
+}
+/*
+libs
+(
+"libPCG2.so"
+);
+*/
+// ************************************************************************* //
