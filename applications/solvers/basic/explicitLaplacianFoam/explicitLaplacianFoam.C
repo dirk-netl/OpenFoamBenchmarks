@@ -90,7 +90,8 @@ int main(int argc, char *argv[])
     // use max value to reduce operation cound
     dimensionedScalar center("center", dimensionSet(0,0,0,0,0,0,0), 0.4);
     dimensionedScalar coeff("coeff", dimensionSet(0,0,0,0,0,0,0), 0.1);
-
+    dimensionedScalar zero("zero", dimensionSet(0,0,0,1,0,0,0), 0.0);
+ 
         //  Info << "  ClockTime before = " << runTime.elapsedClockTime() << " s"
         //    << nl << endl;
 
@@ -105,7 +106,8 @@ int main(int argc, char *argv[])
      auto begin = std::chrono::high_resolution_clock::now();
 
  	const fvPatchList& patches = mesh.boundary();
-	Tneighbor_sum = 0.0;  
+	//Tneighbor_sum = {0.0};  
+	Tneighbor_sum = zero;  
 	forAll(T, celli)
 	{
  	//Info << patchI<<", "<<T.boundaryField()[patchI].patchInternalField()<<endl;
