@@ -214,3 +214,6 @@ ThirdParty directory will contain either an `Allwmake` file or a
 - [Contacting OpenCFD](http://www.openfoam.com/contact/)
 
 Copyright 2016-2021 OpenCFD Ltd
+=======
+# OpenFoamBenchmarks
+OpenFOAM code repository containing benchmark code for comparisons to WSE performance
