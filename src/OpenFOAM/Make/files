@@ -412,6 +412,7 @@ $(lduMatrix)/lduMatrix/lduMatrixPreconditioner.C
 $(lduMatrix)/solvers/diagonalSolver/diagonalSolver.C
 $(lduMatrix)/solvers/smoothSolver/smoothSolver.C
 $(lduMatrix)/solvers/PCG/PCG.C
+$(lduMatrix)/solvers/PCG2/PCG_modified.C
 $(lduMatrix)/solvers/PBiCG/PBiCG.C
 $(lduMatrix)/solvers/PBiCGStab/PBiCGStab.C
 $(lduMatrix)/solvers/PPCG/PPCG.C
