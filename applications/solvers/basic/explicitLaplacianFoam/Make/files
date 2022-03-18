@@ -1,0 +1,3 @@
+explicitLaplacianFoam.C
+
+EXE = $(FOAM_APPBIN)/explicitLaplacianFoam
