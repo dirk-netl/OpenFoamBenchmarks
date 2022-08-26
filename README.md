@@ -10,6 +10,67 @@ individual and group contributors, integrations
 (eg, from FOAM-extend and OpenFOAM Foundation Ltd) as well as
 [governance guided activities](https://www.openfoam.com/governance/).
 
+## Instructions for Running Benchmarks
+1.    Pull the code.
+
+>git clone https://github.com/dirk-netl/OpenFOAM-8.git
+>
+>cd OpenFOAM-8
+>
+>git checkout benchmark
+
+ 
+2.    To setup the environment for OpenFOAM run the following command (the {USER_PATH} is where user downloaded the source code)
+
+>source /{USER_PATH}/OpenFOAM-8/etc/bashrc
+
+and try 
+
+> foam
+
+If it changes the directory to the OpenFOAM-8, the environment is setup well.
+ 
+3.    Before you build the OpenFOAM you have to install the third party programs, that is available [here](http://dl.openfoam.org/third-party/8)
+You have to download this and extract where the OpenFOAM-8 is, and change the folder name like ThirdParty-8 to avoid any issue regarding the path. So, if you do an ‘ls’, it looks like
+
+>ls
+>
+>OpenFOAM-8 ThirdParty-8
+
+Then, go to the ThirdParty-8 and do 
+
+>./Allwmake
+
+4.    Now you can build the OpenFOAM solver at OpenFOAM-8 by following command
+
+>./Allwmake
+
+If you have multiple cores, you can use parallel make process with ‘-j’ like
+
+>./Allwmake -j
+
+(For parallel making, we needed ’gnu/9.3.0’, ‘openmpi/4.0.4_gnu9.3’)
+
+If it stops with an error regarding “scotch decomposition”, you have to compile the Thirdparty to have the library.
+
+5.    Once the compilation is done, you can run an example case with one of the solver we used for our benchmarking. First you have to generate your OpenFOAM run folder by
+
+>mkdir $FOAM_RUN
+>
+>cd $FOAM_RUN
+
+And copy the example case by
+
+>cp /{USER_PATH}/OpenFOAM-8/benchmark_example/box_1M $FOAM_RUN
+
+And run the case
+
+> cd $FOAM_run/box_1M
+>
+>blockMesh
+>
+>explicitLaplacianFoam
+
 
 ## License
 
